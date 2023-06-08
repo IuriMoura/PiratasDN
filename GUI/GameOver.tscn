@@ -1,0 +1,100 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Assets/Personagens/Jogador/Player (no weapon).png" type="Texture" id=1]
+[ext_resource path="res://GUI/Tema_Jogo.tres" type="Theme" id=2]
+[ext_resource path="res://GUI/GameOver.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Musicas/loop-pirates-ahoy-01.ogg" type="AudioStream" id=4]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 128, 1280, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 192, 1280, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 256, 1280, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 320, 1280, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "morre",
+"speed": 5.0
+} ]
+
+[node name="GameOver" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="BG" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 153.0
+margin_top = 235.0
+margin_right = 870.0
+margin_bottom = 365.0
+custom_constants/separation = 19
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 717.0
+margin_bottom = 49.0
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Seria esse o fim da historia...?"
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 68.0
+margin_right = 717.0
+margin_bottom = 130.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer"]
+margin_left = 223.0
+margin_right = 493.0
+margin_bottom = 62.0
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+position = Vector2( -61, 21 )
+frames = SubResource( 5 )
+animation = "morre"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+margin_right = 270.0
+margin_bottom = 62.0
+
+[node name="Continue" type="Button" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer"]
+margin_right = 270.0
+margin_bottom = 29.0
+text = "Tentar Novamente?"
+
+[node name="Exit" type="Button" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer"]
+margin_top = 33.0
+margin_right = 270.0
+margin_bottom = 62.0
+text = "Sair"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer/Continue" to="." method="_on_Continue_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]

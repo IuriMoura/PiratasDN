@@ -1,0 +1,133 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Assets/Texturas/superfície-de-ressonância-com-fundo-textura-madeira-da-vintage-para-projeto-224453041.jpg" type="Texture" id=1]
+[ext_resource path="res://Mecanicas/Porta.gd" type="Script" id=2]
+[ext_resource path="res://Mecanicas/Luz.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 99, 20 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 100, 72.5 )
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "horizontal_vertical"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 90.0 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "para_cima"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 180.0, 270.0 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "para_esquerda"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 270.0, 180.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "vertical_horizontal"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 90.0, 0.0 ]
+}
+
+[node name="Porta" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Corpo" type="StaticBody2D" parent="."]
+position = Vector2( 0, -1 )
+rotation = 1.5708
+scale = Vector2( 0.4, 0.4 )
+collision_layer = 4
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Corpo"]
+position = Vector2( 100, 20 )
+z_index = 1
+shape = SubResource( 1 )
+
+[node name="TextureRect" type="TextureRect" parent="Corpo"]
+margin_right = 199.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )
+expand = true
+
+[node name="Area2D" type="Area2D" parent="Corpo"]
+position = Vector2( 100, 20 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Corpo/Area2D"]
+position = Vector2( 0, -2.09808e-05 )
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Corpo"]
+reset_on_save = false
+anims/RESET = SubResource( 3 )
+anims/horizontal_vertical = SubResource( 6 )
+anims/para_cima = SubResource( 7 )
+anims/para_esquerda = SubResource( 8 )
+anims/vertical_horizontal = SubResource( 5 )
+
+[node name="Luz" parent="." instance=ExtResource( 3 )]
+position = Vector2( 7.24999, 55.75 )
+enabled = false
+
+[connection signal="body_entered" from="Corpo/Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Corpo/Area2D" to="." method="_on_Area2D_body_exited"]

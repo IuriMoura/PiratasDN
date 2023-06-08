@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Personagens/Jogador.tscn" type="PackedScene" id=1]
+[ext_resource path="res://GUI/HUB.tscn" type="PackedScene" id=2]
+
+[node name="LevelTemplate" type="Node2D"]
+
+[node name="TileMpas" type="Node" parent="."]
+
+[node name="Objetivos" type="Node" parent="."]
+
+[node name="Portas" type="Node" parent="."]
+
+[node name="Luzes" type="Node" parent="."]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Luzes"]
+
+[node name="Inimigos" type="Node" parent="."]
+
+[node name="Coletaveis" type="Node" parent="."]
+
+[node name="Jogador" parent="." instance=ExtResource( 1 )]
+
+[node name="HUB" parent="." instance=ExtResource( 2 )]
