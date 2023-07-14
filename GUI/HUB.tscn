@@ -1,11 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://GUI/HUB.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Texturas/barHorizontal_red_mid.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Texturas/barHorizontal_shadow_mid.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Inventario/health_potion.png" type="Texture" id=4]
+[ext_resource path="res://GUI/Tema_Jogo.tres" type="Theme" id=5]
+[ext_resource path="res://Assets/Inventario/ouro5.png" type="Texture" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.572549, 0.0823529, 0.0823529, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
 
 [node name="HUB" type="CanvasLayer" groups=["HUD"]]
 script = ExtResource( 1 )
@@ -13,6 +18,7 @@ script = ExtResource( 1 )
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 5 )
 
 [node name="ProgressBar" type="ProgressBar" parent="Control"]
 visible = false
@@ -36,3 +42,11 @@ value = 10.0
 texture_under = ExtResource( 3 )
 texture_progress = ExtResource( 2 )
 nine_patch_stretch = true
+
+[node name="ItemList" type="ItemList" parent="Control"]
+margin_left = 11.0
+margin_top = 494.0
+margin_right = 228.0
+margin_bottom = 580.0
+custom_styles/bg = SubResource( 2 )
+items = [ " x 0", ExtResource( 4 ), true, "x 0", ExtResource( 6 ), true ]

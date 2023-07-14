@@ -27,6 +27,9 @@ func recebeu_ataque(dano, dir):
 	pos_ataque()
 
 func empurrar_tras(dir):
+	$AudioStreamPlayer.stream = load("res://Assets/SFX/Socapex - new_hits_2.wav")
+	$AudioStreamPlayer.play()
+	
 	if dir == "_cima":
 		position.y -= knockback
 	elif dir == "_baixo":

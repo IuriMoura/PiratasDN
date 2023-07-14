@@ -46,3 +46,9 @@ func pos_ataque():
 	set_physics_process(false)
 	$Timer.start(1)
 
+func gera_loot():
+	var gold = preload("res://Objetos/Gold.tscn")
+	var loot = gold.instance()
+	var objetos = get_node("/root").find_node("Coletaveis", true, false)
+	loot.position = position
+	objetos.add_child(loot)
