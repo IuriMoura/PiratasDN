@@ -52,3 +52,11 @@ func gera_loot():
 	var objetos = get_node("/root").find_node("Coletaveis", true, false)
 	loot.position = position
 	objetos.add_child(loot)
+	
+func congelar():
+	set_physics_process(false)
+	$Timer.paused = true
+	
+func descongelar():
+	set_physics_process(true)
+	$Timer.paused = false

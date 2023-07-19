@@ -20,16 +20,32 @@ func _input(event):
 		$AnimationPlayer.play("ataque" + frente)
 		set_physics_process(false)
 	elif Input.is_action_just_pressed("item") and potion > 0:
-		HP = HP+3
+		HP += 3
+		#não sei porque mas esta zerando o HP
+		
 		if HP > HP_max:
 			HP = HP_max
+			
 		potion -= 1
+		
+		if potion == 0:
+			for i in inventario:
+				if i.nome == "PocaoHP":
+					inventario.erase(i)
+					#não apaga o item
 
 func receber_item(item):
 	if item.usavel:
-		inventario.append(item)
 		if item.nome == "pocaoHP":
 			potion += 1
+		
+		var achou = false
+		for i in inventario:
+			if item.nome == i.nome:
+				achou = true
+				
+		if not achou:
+			inventario.append(item)
 	else:
 		dano = item.atributo
 		arma = item

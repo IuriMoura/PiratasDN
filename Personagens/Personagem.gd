@@ -30,14 +30,20 @@ func empurrar_tras(dir):
 	$AudioStreamPlayer.stream = load("res://Assets/SFX/Socapex - new_hits_2.wav")
 	$AudioStreamPlayer.play()
 	
+	var nova_posicao = position
+	
 	if dir == "_cima":
-		position.y -= knockback
+		nova_posicao.y -= knockback
 	elif dir == "_baixo":
-		position.y += knockback
+		nova_posicao.y += knockback
 	elif dir == "_direita":
-		position.x += knockback
+		nova_posicao.x += knockback
 	else:
-		position.x -= knockback
+		nova_posicao.x -= knockback
+		
+	var motion = nova_posicao - position
+	
+	move_and_slide(motion * knockback)
 	
 func definir_movimento():
 	pass
@@ -57,3 +63,9 @@ func definir_direcao():
 		frente = "_baixo"
 	elif direcao.y < 0 and abs(direcao.x) < abs(direcao.y):
 		frente = "_cima"
+
+func congelar():
+	set_physics_process(false)
+	
+func descongelar():
+	set_physics_process(true)

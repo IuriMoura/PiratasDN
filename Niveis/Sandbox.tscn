@@ -6,7 +6,7 @@
 [ext_resource path="res://Mecanicas/Luz.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objetos/Espada.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Objetos/PocaoHP.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Personagens/Marujo.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Personagens/Sentinela.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Objetos/Gold.tscn" type="PackedScene" id=8]
 
 [node name="Sandbox" instance=ExtResource( 1 )]
@@ -41,17 +41,18 @@ rotation = 0.0
 position = Vector2( 8.24999, 55.75 )
 energy = 1.2
 
-[node name="Marujo" parent="Inimigos" index="0" instance=ExtResource( 7 )]
-position = Vector2( 606, 162 )
+[node name="Sentinela" parent="Inimigos" index="0" instance=ExtResource( 7 )]
+position = Vector2( 530, 144 )
+frente_inicial = "andar_esquerda"
 
-[node name="Position2D" type="Position2D" parent="Inimigos/Marujo/Locais" index="0"]
-position = Vector2( 389, 187 )
+[node name="AnimatedSprite" parent="Inimigos/Sentinela" index="0"]
+frame = 8
 
-[node name="Position2D2" type="Position2D" parent="Inimigos/Marujo/Locais" index="1"]
-position = Vector2( 376, 438 )
+[node name="CollisionPolygon2D" parent="Inimigos/Sentinela/Visao" index="0"]
+position = Vector2( 0, -3 )
 
-[node name="Position2D3" type="Position2D" parent="Inimigos/Marujo/Locais" index="2"]
-position = Vector2( 586, 419 )
+[node name="Position2D" type="Position2D" parent="Inimigos/Sentinela/Locais" index="0"]
+position = Vector2( 530, 144 )
 
 [node name="Espada" parent="Coletaveis" index="0" instance=ExtResource( 5 )]
 position = Vector2( -12, 140 )
@@ -59,14 +60,20 @@ position = Vector2( -12, 140 )
 [node name="PocaoHP" parent="Coletaveis" index="1" instance=ExtResource( 6 )]
 position = Vector2( 82, 100 )
 
-[node name="Gold" parent="Coletaveis" index="2" instance=ExtResource( 8 )]
+[node name="PocaoHP2" parent="Coletaveis" index="2" instance=ExtResource( 6 )]
+position = Vector2( 30, 69 )
+
+[node name="Gold" parent="Coletaveis" index="3" instance=ExtResource( 8 )]
 position = Vector2( -13, 74 )
 
 [node name="Jogador" parent="." index="6"]
 position = Vector2( 79, -8 )
 HP_max = 0
 
+[node name="Inventario" parent="Jogador" index="6"]
+visible = false
+
 [editable path="Portas/Porta"]
 [editable path="Portas/Porta2"]
-[editable path="Inimigos/Marujo"]
+[editable path="Inimigos/Sentinela"]
 [editable path="Jogador"]

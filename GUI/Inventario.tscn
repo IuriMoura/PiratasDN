@@ -1,0 +1,511 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://GUI/Tema_Jogo.tres" type="Theme" id=1]
+[ext_resource path="res://Assets/Inventario/BG-Inventory.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Inventario/Box-Inventory.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Personagens/Jogador/Player (no weapon).png" type="Texture" id=5]
+[ext_resource path="res://Assets/Fontes/alagard_by_pix3m-d6awiwp.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://GUI/Inventario.gd" type="Script" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 6 )
+
+[node name="Inventario" type="CanvasLayer"]
+script = ExtResource( 8 )
+
+[node name="Popup" type="Popup" parent="."]
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = -1.0
+margin_right = 1.0
+margin_bottom = -1.0
+theme = ExtResource( 1 )
+
+[node name="BG" type="TextureRect" parent="Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 1.0
+margin_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Title" type="Label" parent="Popup"]
+margin_left = 375.0
+margin_top = 79.0
+margin_right = 626.0
+margin_bottom = 128.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Inventario"
+align = 1
+
+[node name="Peronagem" type="NinePatchRect" parent="Popup"]
+margin_left = 217.0
+margin_top = 196.0
+margin_right = 305.0
+margin_bottom = 286.0
+texture = ExtResource( 4 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Sprite" type="Sprite" parent="Popup/Peronagem"]
+position = Vector2( 41, 42 )
+texture = ExtResource( 5 )
+hframes = 13
+vframes = 21
+frame = 130
+
+[node name="Arma" type="NinePatchRect" parent="Popup"]
+margin_left = 325.0
+margin_top = 214.0
+margin_right = 373.0
+margin_bottom = 268.0
+texture = ExtResource( 4 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Sprite" type="Sprite" parent="Popup/Arma"]
+position = Vector2( 23, 26 )
+
+[node name="Ouro" type="Label" parent="Popup"]
+margin_left = 225.0
+margin_top = 297.0
+margin_right = 298.0
+margin_bottom = 324.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Ouro: 0"
+
+[node name="Items" type="GridContainer" parent="Popup"]
+margin_left = 488.0
+margin_top = 182.0
+margin_right = 748.0
+margin_bottom = 398.0
+columns = 6
+
+[node name="Item0" type="NinePatchRect" parent="Popup/Items"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 4 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Sprite" type="Sprite" parent="Popup/Items/Item0"]
+position = Vector2( 19, 20 )
+
+[node name="Item1" type="NinePatchRect" parent="Popup/Items"]
+margin_left = 44.0
+margin_right = 84.0
+margin_bottom = 40.0
+texture = ExtResource( 4 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Sprite" type="Sprite" parent="Popup/Items/Item1"]
+position = Vector2( 19, 20 )
+
+[node name="Item2" type="NinePatchRect" parent="Popup/Items"]
+margin_left = 88.0
+margin_right = 128.0
+margin_bottom = 40.0
+texture = ExtResource( 4 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Sprite" type="Sprite" parent="Popup/Items/Item2"]
+position = Vector2( 19, 20 )
+
+[node name="Item3" type="NinePatchRect" parent="Popup/Items"]
+margin_left = 132.0
+margin_right = 172.0
+margin_bottom = 40.0
+texture = ExtResource( 4 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Sprite" type="Sprite" parent="Popup/Items/Item3"]
+position = Vector2( 19, 20 )
+
+[node name="Item4" type="NinePatchRect" parent="Popup/Items"]
+margin_left = 176.0
+margin_right = 216.0
+margin_bottom = 40.0
+texture = ExtResource( 4 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Sprite" type="Sprite" parent="Popup/Items/Item4"]
+position = Vector2( 19, 20 )
+
+[node name="Item5" type="NinePatchRect" parent="Popup/Items"]
+margin_left = 220.0
+margin_right = 260.0
+margin_bottom = 40.0
+texture = ExtResource( 4 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Sprite" type="Sprite" parent="Popup/Items/Item5"]
+position = Vector2( 19, 20 )
+
+[node name="Item6" type="NinePatchRect" parent="Popup/Items"]
+margin_top = 44.0
+margin_right = 40.0
+margin_bottom = 84.0
+texture = ExtResource( 4 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Sprite" type="Sprite" parent="Popup/Items/Item6"]
+position = Vector2( 19, 20 )
+
+[node name="Item7" type="NinePatchRect" parent="Popup/Items"]
+margin_left = 44.0
+margin_top = 44.0
+margin_right = 84.0
+margin_bottom = 84.0
+texture = ExtResource( 4 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Sprite" type="Sprite" parent="Popup/Items/Item7"]
+position = Vector2( 19, 20 )
+
+[node name="Item8" type="NinePatchRect" parent="Popup/Items"]
+margin_left = 88.0
+margin_top = 44.0
+margin_right = 128.0
+margin_bottom = 84.0
+texture = ExtResource( 4 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Sprite" type="Sprite" parent="Popup/Items/Item8"]
+position = Vector2( 19, 20 )
+
+[node name="Item9" type="NinePatchRect" parent="Popup/Items"]
+margin_left = 132.0
+margin_top = 44.0
+margin_right = 172.0
+margin_bottom = 84.0
+texture = ExtResource( 4 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Sprite" type="Sprite" parent="Popup/Items/Item9"]
+position = Vector2( 19, 20 )
+
+[node name="Item10" type="NinePatchRect" parent="Popup/Items"]
+margin_left = 176.0
+margin_top = 44.0
+margin_right = 216.0
+margin_bottom = 84.0
+texture = ExtResource( 4 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Sprite" type="Sprite" parent="Popup/Items/Item10"]
+position = Vector2( 19, 20 )
+
+[node name="Item11" type="NinePatchRect" parent="Popup/Items"]
+margin_left = 220.0
+margin_top = 44.0
+margin_right = 260.0
+margin_bottom = 84.0
+texture = ExtResource( 4 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Sprite" type="Sprite" parent="Popup/Items/Item11"]
+position = Vector2( 19, 20 )
+
+[node name="Item12" type="NinePatchRect" parent="Popup/Items"]
+margin_top = 88.0
+margin_right = 40.0
+margin_bottom = 128.0
+texture = ExtResource( 4 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Sprite" type="Sprite" parent="Popup/Items/Item12"]
+position = Vector2( 19, 20 )
+
+[node name="Item13" type="NinePatchRect" parent="Popup/Items"]
+margin_left = 44.0
+margin_top = 88.0
+margin_right = 84.0
+margin_bottom = 128.0
+texture = ExtResource( 4 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Sprite" type="Sprite" parent="Popup/Items/Item13"]
+position = Vector2( 19, 20 )
+
+[node name="Item14" type="NinePatchRect" parent="Popup/Items"]
+margin_left = 88.0
+margin_top = 88.0
+margin_right = 128.0
+margin_bottom = 128.0
+texture = ExtResource( 4 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Sprite" type="Sprite" parent="Popup/Items/Item14"]
+position = Vector2( 19, 20 )
+
+[node name="Item15" type="NinePatchRect" parent="Popup/Items"]
+margin_left = 132.0
+margin_top = 88.0
+margin_right = 172.0
+margin_bottom = 128.0
+texture = ExtResource( 4 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Sprite" type="Sprite" parent="Popup/Items/Item15"]
+position = Vector2( 19, 20 )
+
+[node name="Item16" type="NinePatchRect" parent="Popup/Items"]
+margin_left = 176.0
+margin_top = 88.0
+margin_right = 216.0
+margin_bottom = 128.0
+texture = ExtResource( 4 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Sprite" type="Sprite" parent="Popup/Items/Item16"]
+position = Vector2( 19, 20 )
+
+[node name="Item17" type="NinePatchRect" parent="Popup/Items"]
+margin_left = 220.0
+margin_top = 88.0
+margin_right = 260.0
+margin_bottom = 128.0
+texture = ExtResource( 4 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Sprite" type="Sprite" parent="Popup/Items/Item17"]
+position = Vector2( 19, 20 )
+
+[node name="Item18" type="NinePatchRect" parent="Popup/Items"]
+margin_top = 132.0
+margin_right = 40.0
+margin_bottom = 172.0
+texture = ExtResource( 4 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Sprite" type="Sprite" parent="Popup/Items/Item18"]
+position = Vector2( 19, 20 )
+
+[node name="Item19" type="NinePatchRect" parent="Popup/Items"]
+margin_left = 44.0
+margin_top = 132.0
+margin_right = 84.0
+margin_bottom = 172.0
+texture = ExtResource( 4 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Sprite" type="Sprite" parent="Popup/Items/Item19"]
+position = Vector2( 19, 20 )
+
+[node name="Item20" type="NinePatchRect" parent="Popup/Items"]
+margin_left = 88.0
+margin_top = 132.0
+margin_right = 128.0
+margin_bottom = 172.0
+texture = ExtResource( 4 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Sprite" type="Sprite" parent="Popup/Items/Item20"]
+position = Vector2( 19, 20 )
+
+[node name="Item21" type="NinePatchRect" parent="Popup/Items"]
+margin_left = 132.0
+margin_top = 132.0
+margin_right = 172.0
+margin_bottom = 172.0
+texture = ExtResource( 4 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Sprite" type="Sprite" parent="Popup/Items/Item21"]
+position = Vector2( 19, 20 )
+
+[node name="Item22" type="NinePatchRect" parent="Popup/Items"]
+margin_left = 176.0
+margin_top = 132.0
+margin_right = 216.0
+margin_bottom = 172.0
+texture = ExtResource( 4 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Sprite" type="Sprite" parent="Popup/Items/Item22"]
+position = Vector2( 19, 20 )
+
+[node name="Item23" type="NinePatchRect" parent="Popup/Items"]
+margin_left = 220.0
+margin_top = 132.0
+margin_right = 260.0
+margin_bottom = 172.0
+texture = ExtResource( 4 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Sprite" type="Sprite" parent="Popup/Items/Item23"]
+position = Vector2( 19, 20 )
+
+[node name="Item24" type="NinePatchRect" parent="Popup/Items"]
+margin_top = 176.0
+margin_right = 40.0
+margin_bottom = 216.0
+texture = ExtResource( 4 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Sprite" type="Sprite" parent="Popup/Items/Item24"]
+position = Vector2( 19, 20 )
+
+[node name="Item25" type="NinePatchRect" parent="Popup/Items"]
+margin_left = 44.0
+margin_top = 176.0
+margin_right = 84.0
+margin_bottom = 216.0
+texture = ExtResource( 4 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Sprite" type="Sprite" parent="Popup/Items/Item25"]
+position = Vector2( 19, 20 )
+
+[node name="Item26" type="NinePatchRect" parent="Popup/Items"]
+margin_left = 88.0
+margin_top = 176.0
+margin_right = 128.0
+margin_bottom = 216.0
+texture = ExtResource( 4 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Sprite" type="Sprite" parent="Popup/Items/Item26"]
+position = Vector2( 19, 20 )
+
+[node name="Item27" type="NinePatchRect" parent="Popup/Items"]
+margin_left = 132.0
+margin_top = 176.0
+margin_right = 172.0
+margin_bottom = 216.0
+texture = ExtResource( 4 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Sprite" type="Sprite" parent="Popup/Items/Item27"]
+position = Vector2( 19, 20 )
+
+[node name="Item28" type="NinePatchRect" parent="Popup/Items"]
+margin_left = 176.0
+margin_top = 176.0
+margin_right = 216.0
+margin_bottom = 216.0
+texture = ExtResource( 4 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Sprite" type="Sprite" parent="Popup/Items/Item28"]
+position = Vector2( 19, 20 )
+
+[node name="Item29" type="NinePatchRect" parent="Popup/Items"]
+margin_left = 220.0
+margin_top = 176.0
+margin_right = 260.0
+margin_bottom = 216.0
+texture = ExtResource( 4 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Sprite" type="Sprite" parent="Popup/Items/Item29"]
+position = Vector2( 19, 20 )
+
+[node name="Voltar" type="Button" parent="Popup"]
+margin_left = 486.0
+margin_top = 417.0
+margin_right = 631.0
+margin_bottom = 466.0
+text = "Voltar"
+
+[connection signal="pressed" from="Popup/Voltar" to="." method="_on_Voltar_pressed"]

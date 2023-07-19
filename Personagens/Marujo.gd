@@ -37,5 +37,3 @@ func caminhar():
 func _on_Timer_timeout():
 	escolha_destino()
 	set_physics_process(true)
-
-
